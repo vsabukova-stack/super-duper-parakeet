@@ -178,12 +178,12 @@
       border-radius: 12px;
     }
 
-    /* Рамка под фото в стиле Журнальный Ч/Б */
+    /* Фотографии */
     .photo-box {
       position: relative;
       width: 100%;
       aspect-ratio: 3 / 4;
-      max-height: 380px;
+      max-height: 400px; /* Размер блока */
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--border);
@@ -197,9 +197,8 @@
     .photo-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: grayscale(100%);
+      object-fit: contain; /* Фото показывается целиком, не обрезается */
+      background-color: #1a183a;
       display: none;
     }
 
@@ -211,6 +210,7 @@
       inset: 0;
       background: var(--photo-tint);
       pointer-events: none;
+      display: none; /* Убран фиолетовый оттенок, который портил фото */
     }
 
     .photo-placeholder {
@@ -460,7 +460,7 @@
       <a class="nav-cta" href="https://t.me/WildFlower0000" target="_blank" rel="noopener">Telegram →</a>
     </header>
 
-    <!-- Главный экран (Фото № 1 — крупный план с галстуком) -->
+    <!-- Главный экран (Фото № 1) -->
     <section class="hero">
       <div>
         <span class="eyebrow">Студентка ИТ • ГУАП • Группа 2543</span>
@@ -475,23 +475,25 @@
       </div>
 
       <div class="photo-box" id="box1">
-        <img id="img1" src="photo1.jpg" alt="Виктория Скляр — портрет" onload="markLoaded('box1')" onerror="markEmpty('box1')" />
+        <!-- Вставлена ссылка с postimages -->
+        <img id="img1" src="https://i.postimg.cc/qh5g4nJm/photo1.jpg" alt="Виктория Скляр — портрет" onload="markLoaded('box1')" onerror="markEmpty('box1')" />
         <div class="photo-overlay"></div>
         <label class="photo-placeholder" for="input1">
-          <strong>Фото 1 (рекомендуем фото № 5)</strong>
+          <strong>Фото 1</strong>
           <span>Нажми сюда для примерки или положи рядом файл <code>photo1.jpg</code></span>
         </label>
         <input type="file" id="input1" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img1', 'box1')" />
       </div>
     </section>
 
-    <!-- Блок «Обо мне» (Фото № 2 — деловой кадр стоя) -->
+    <!-- Блок «Обо мне» (Фото № 2) -->
     <section class="about-card">
       <div class="photo-box" id="box2">
-        <img id="img2" src="photo2.jpg" alt="Виктория Скляр — деловой портрет" onload="markLoaded('box2')" onerror="markEmpty('box2')" />
+        <!-- Вставлена ссылка с postimages -->
+        <img id="img2" src="https://i.postimg.cc/qh5g4nJS/photo2.jpg" alt="Виктория Скляр — деловой портрет" onload="markLoaded('box2')" onerror="markEmpty('box2')" />
         <div class="photo-overlay"></div>
         <label class="photo-placeholder" for="input2">
-          <strong>Фото 2 (фото № 2, ч/б стоя)</strong>
+          <strong>Фото 2</strong>
           <span>Нажми сюда для примерки или положи рядом файл <code>photo2.jpg</code></span>
         </label>
         <input type="file" id="input2" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img2', 'box2')" />
@@ -573,7 +575,7 @@
       </div>
     </div>
 
-    <!-- Хобби и характер (Фото № 3 — кадр сидя с улыбкой) -->
+    <!-- Хобби и характер (Фото № 3) -->
     <div class="sec-head">
       <h2 class="sec-title">Интересы и характер</h2>
       <span class="sec-tag">Вне учёбы</span>
@@ -611,10 +613,11 @@
       </div>
 
       <div class="photo-box" id="box3">
-        <img id="img3" src="photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" onload="markLoaded('box3')" onerror="markEmpty('box3')" />
+        <!-- Вставлена ссылка с postimages -->
+        <img id="img3" src="https://i.postimg.cc/Hchjd5Yf/photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" onload="markLoaded('box3')" onerror="markEmpty('box3')" />
         <div class="photo-overlay"></div>
         <label class="photo-placeholder" for="input3">
-          <strong>Фото 3 (фото № 3, ч/б сидя)</strong>
+          <strong>Фото 3</strong>
           <span>Нажми сюда для примерки или положи рядом файл <code>photo3.jpg</code></span>
         </label>
         <input type="file" id="input3" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img3', 'box3')" />
