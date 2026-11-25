@@ -196,8 +196,9 @@
     .photo-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* <--- ИЗМЕНЕНО ТУТ: теперь фото заполняет всю рамку */
-      object-position: center top;
+      object-fit: cover; /* Фото заполняет всю рамку */
+      object-position: center top; /* Центрируем по верху, чтобы лицо не обрезалось */
+      filter: grayscale(100%); /* ЧЕРНО-БЕЛЫЙ ФИЛЬТР */
       display: block;
     }
 
