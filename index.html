@@ -40,6 +40,7 @@
       padding: 28px 16px 64px;
     }
 
+    /* Шапка с логотипом VS */
     .topbar {
       display: flex;
       align-items: center;
@@ -89,6 +90,7 @@
 
     .nav-cta:hover { border-color: var(--accent-2); }
 
+    /* Главный экран (Hero) */
     .hero {
       display: grid;
       grid-template-columns: 1fr;
@@ -176,7 +178,7 @@
       border-radius: 12px;
     }
 
-    /* Фотографии */
+    /* Рамка под фото в стиле Журнальный Ч/Б */
     .photo-box {
       position: relative;
       width: 100%;
@@ -186,6 +188,10 @@
       overflow: hidden;
       border: 1px solid var(--border);
       background: var(--card-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .photo-box img {
@@ -194,8 +200,11 @@
       object-fit: cover;
       object-position: center top;
       filter: grayscale(100%) contrast(1.22) brightness(1.02);
-      display: block;
+      display: none;
     }
+
+    .photo-box.has-img img { display: block; }
+    .photo-box.has-img .photo-placeholder { display: none; }
 
     .photo-overlay {
       position: absolute;
@@ -204,6 +213,33 @@
       pointer-events: none;
     }
 
+    .photo-placeholder {
+      padding: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .photo-placeholder strong {
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .photo-placeholder code {
+      color: var(--accent-2);
+      background: rgba(0, 212, 255, 0.12);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    /* Блок «Обо мне» со вторым фото */
     .about-card {
       display: grid;
       grid-template-columns: 1fr;
@@ -233,6 +269,7 @@
       margin-top: 10px;
     }
 
+    /* Заголовки секций */
     .sec-head {
       margin: 34px 0 14px;
       display: flex;
@@ -254,6 +291,7 @@
       color: var(--accent);
     }
 
+    /* Сетки карточек */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr;
@@ -296,6 +334,7 @@
       color: var(--muted);
     }
 
+    /* Теги навыков */
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -313,6 +352,7 @@
       color: var(--text);
     }
 
+    /* Секция Хобби + третье фото */
     .hobby-layout {
       display: grid;
       grid-template-columns: 1fr;
@@ -370,6 +410,7 @@
       min-height: 360px;
     }
 
+    /* Контакты */
     .contact-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -419,7 +460,7 @@
       <a class="nav-cta" href="https://t.me/WildFlower0000" target="_blank" rel="noopener">Telegram →</a>
     </header>
 
-    <!-- Главный экран (Фото 1) -->
+    <!-- Главный экран (Фото № 1 — крупный план с галстуком) -->
     <section class="hero">
       <div>
         <span class="eyebrow">Студентка ИТ • ГУАП • Группа 2543</span>
@@ -433,19 +474,29 @@
         </div>
       </div>
 
-      <div class="photo-box">
-        <!-- Ссылка на ФОТО 1 вставлена -->
-        <img src="https://i.postimg.cc/qh5g4nJm/photo1.jpg" alt="Виктория Скляр — портрет" />
+      <div class="photo-box" id="box1">
+        <!-- ЗАМЕНЕНО ТОЛЬКО ЗДЕСЬ: src="photo1.jpg" на ссылку -->
+        <img id="img1" src="https://i.postimg.cc/qh5g4nJm/photo1.jpg" alt="Виктория Скляр — портрет" onload="markLoaded('box1')" onerror="markEmpty('box1')" />
         <div class="photo-overlay"></div>
+        <label class="photo-placeholder" for="input1">
+          <strong>Фото 1 (рекомендуем фото № 5)</strong>
+          <span>Нажми сюда для примерки или положи рядом файл <code>photo1.jpg</code></span>
+        </label>
+        <input type="file" id="input1" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img1', 'box1')" />
       </div>
     </section>
 
-    <!-- Блок «Обо мне» (Фото 2) -->
+    <!-- Блок «Обо мне» (Фото № 2 — деловой кадр стоя) -->
     <section class="about-card">
-      <div class="photo-box">
-        <!-- Ссылка на ФОТО 2 вставлена -->
-        <img src="https://i.postimg.cc/qh5g4nJS/photo2.jpg" alt="Виктория Скляр — деловой портрет" />
+      <div class="photo-box" id="box2">
+        <!-- ЗАМЕНЕНО ТОЛЬКО ЗДЕСЬ: src="photo2.jpg" на ссылку -->
+        <img id="img2" src="https://i.postimg.cc/qh5g4nJS/photo2.jpg" alt="Виктория Скляр — деловой портрет" onload="markLoaded('box2')" onerror="markEmpty('box2')" />
         <div class="photo-overlay"></div>
+        <label class="photo-placeholder" for="input2">
+          <strong>Фото 2 (фото № 2, ч/б стоя)</strong>
+          <span>Нажми сюда для примерки или положи рядом файл <code>photo2.jpg</code></span>
+        </label>
+        <input type="file" id="input2" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img2', 'box2')" />
       </div>
       <div class="about-text">
         <span class="sec-tag">О подходе к делу</span>
@@ -524,7 +575,7 @@
       </div>
     </div>
 
-    <!-- Хобби и характер (Фото 3) -->
+    <!-- Хобби и характер (Фото № 3 — кадр сидя с улыбкой) -->
     <div class="sec-head">
       <h2 class="sec-title">Интересы и характер</h2>
       <span class="sec-tag">Вне учёбы</span>
@@ -561,10 +612,15 @@
         </div>
       </div>
 
-      <div class="photo-box">
-        <!-- Ссылка на ФОТО 3 вставлена -->
-        <img src="https://i.postimg.cc/Hchjd5Yf/photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" />
+      <div class="photo-box" id="box3">
+        <!-- ЗАМЕНЕНО ТОЛЬКО ЗДЕСЬ: src="photo3.jpg" на ссылку -->
+        <img id="img3" src="https://i.postimg.cc/Hchjd5Yf/photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" onload="markLoaded('box3')" onerror="markEmpty('box3')" />
         <div class="photo-overlay"></div>
+        <label class="photo-placeholder" for="input3">
+          <strong>Фото 3 (фото № 3, ч/б сидя)</strong>
+          <span>Нажми сюда для примерки или положи рядом файл <code>photo3.jpg</code></span>
+        </label>
+        <input type="file" id="input3" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img3', 'box3')" />
       </div>
     </section>
 
@@ -584,5 +640,27 @@
       © 2026 Виктория Скляр • Санкт-Петербург, ГУАП • Сделано на чистом HTML, CSS и JS
     </footer>
   </div>
+
+  <script>
+    function markLoaded(boxId) {
+      const box = document.getElementById(boxId);
+      box.classList.remove("is-empty");
+      box.classList.add("has-img");
+    }
+
+    function markEmpty(boxId) {
+      const box = document.getElementById(boxId);
+      box.classList.remove("has-img");
+      box.classList.add("is-empty");
+    }
+
+    function loadLocalPhoto(input, imgId, boxId) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      const img = document.getElementById(imgId);
+      img.src = URL.createObjectURL(file);
+      markLoaded(boxId);
+    }
+  </script>
 </body>
 </html>
