@@ -183,7 +183,8 @@
       position: relative;
       width: 100%;
       aspect-ratio: 3 / 4;
-      max-height: 410px;
+      /* ИЗМЕНЕНО ЗДЕСЬ: уменьшен максимальный размер блока, чтобы фото не растягивалось и не мылилось */
+      max-height: 380px; 
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--border);
@@ -199,7 +200,8 @@
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      filter: grayscale(100%) contrast(1.22) brightness(1.02);
+      /* ИЗМЕНЕНО ЗДЕСЬ: убран лишний контраст, оставлен только черно-белый фильтр */
+      filter: grayscale(100%); 
       display: none;
     }
 
