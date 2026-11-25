@@ -183,8 +183,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 3 / 4;
-      /* ИЗМЕНЕНО ЗДЕСЬ: уменьшен максимальный размер блока, чтобы фото не растягивалось и не мылилось */
-      max-height: 380px; 
+      max-height: 380px;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--border);
@@ -200,8 +199,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      /* ИЗМЕНЕНО ЗДЕСЬ: убран лишний контраст, оставлен только черно-белый фильтр */
-      filter: grayscale(100%); 
+      filter: grayscale(100%);
       display: none;
     }
 
@@ -477,8 +475,7 @@
       </div>
 
       <div class="photo-box" id="box1">
-        <!-- ЗАМЕНЕНО ТОЛЬКО ЗДЕСЬ: src="photo1.jpg" на ссылку -->
-        <img id="img1" src="https://i.postimg.cc/qh5g4nJm/photo1.jpg" alt="Виктория Скляр — портрет" onload="markLoaded('box1')" onerror="markEmpty('box1')" />
+        <img id="img1" src="photo1.jpg" alt="Виктория Скляр — портрет" onload="markLoaded('box1')" onerror="markEmpty('box1')" />
         <div class="photo-overlay"></div>
         <label class="photo-placeholder" for="input1">
           <strong>Фото 1 (рекомендуем фото № 5)</strong>
@@ -491,8 +488,7 @@
     <!-- Блок «Обо мне» (Фото № 2 — деловой кадр стоя) -->
     <section class="about-card">
       <div class="photo-box" id="box2">
-        <!-- ЗАМЕНЕНО ТОЛЬКО ЗДЕСЬ: src="photo2.jpg" на ссылку -->
-        <img id="img2" src="https://i.postimg.cc/qh5g4nJS/photo2.jpg" alt="Виктория Скляр — деловой портрет" onload="markLoaded('box2')" onerror="markEmpty('box2')" />
+        <img id="img2" src="photo2.jpg" alt="Виктория Скляр — деловой портрет" onload="markLoaded('box2')" onerror="markEmpty('box2')" />
         <div class="photo-overlay"></div>
         <label class="photo-placeholder" for="input2">
           <strong>Фото 2 (фото № 2, ч/б стоя)</strong>
@@ -615,8 +611,7 @@
       </div>
 
       <div class="photo-box" id="box3">
-        <!-- ЗАМЕНЕНО ТОЛЬКО ЗДЕСЬ: src="photo3.jpg" на ссылку -->
-        <img id="img3" src="https://i.postimg.cc/Hchjd5Yf/photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" onload="markLoaded('box3')" onerror="markEmpty('box3')" />
+        <img id="img3" src="photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" onload="markLoaded('box3')" onerror="markEmpty('box3')" />
         <div class="photo-overlay"></div>
         <label class="photo-placeholder" for="input3">
           <strong>Фото 3 (фото № 3, ч/б сидя)</strong>
