@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Виктория Скляр — Резюме и портфолио</title>
+  <style>
+    :root {
+      --bg: #0a0914;
+      --bg-grad:
+        radial-gradient(circle at 85% 10%, rgba(139, 92, 246, 0.28) 0%, transparent 45%),
+        radial-gradient(circle at 12% 85%, rgba(0, 212, 255, 0.16) 0%, transparent 45%);
+      --card: rgba(20, 18, 38, 0.88);
+      --card-2: rgba(29, 25, 56, 0.9);
+      --text: #f5f6ff;
+      --muted: #9da4c4;
+      --accent: #8b5cf6;
+      --accent-2: #00d4ff;
+      --accent-soft: rgba(139, 92, 246, 0.16);
+      --border: rgba(139, 92, 246, 0.35);
+      --btn-bg: linear-gradient(95deg, #7c3aed, #2563eb, #06b6d4);
+      --photo-tint: linear-gradient(160deg, rgba(124, 58, 237, 0.14), rgba(0, 212, 255, 0.06));
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background-color: var(--bg);
+      background-image: var(--bg-grad);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 64px;
+    }
+
+    /* Шапка с логотипом VS */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: var(--accent-soft);
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: border-color 0.2s;
+    }
+
+    .nav-cta:hover { border-color: var(--accent-2); }
+
+    /* Главный экран (Hero) */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      margin-bottom: 26px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    @media (min-width: 740px) {
+      .hero {
+        grid-template-columns: 1.25fr 0.85fr;
+        padding: 36px 34px;
+      }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    @media (min-width: 740px) {
+      h1 { font-size: 40px; }
+    }
+
+    .hero-lead {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--btn-bg);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 22px;
+      border-radius: 12px;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.93; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--card-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 20px;
+      border-radius: 12px;
+    }
+
+    /* Рамка под фото в стиле Журнальный Ч/Б */
+    .photo-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      max-height: 410px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%) contrast(1.22) brightness(1.02);
+      display: none;
+    }
+
+    .photo-box.has-img img { display: block; }
+    .photo-box.has-img .photo-placeholder { display: none; }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--photo-tint);
+      pointer-events: none;
+    }
+
+    .photo-placeholder {
+      padding: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .photo-placeholder strong {
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .photo-placeholder code {
+      color: var(--accent-2);
+      background: rgba(0, 212, 255, 0.12);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    /* Блок «Обо мне» со вторым фото */
+    .about-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 740px) {
+      .about-card {
+        grid-template-columns: 0.72fr 1.28fr;
+        padding: 28px 30px;
+      }
+    }
+
+    .about-card .photo-box {
+      max-height: 360px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
+    /* Заголовки секций */
+    .sec-head {
+      margin: 34px 0 14px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .sec-title {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .sec-tag {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    /* Сетки карточек */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 680px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .card-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-2);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Теги навыков */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* Секция Хобби + третье фото */
+    .hobby-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 740px) {
+      .hobby-layout {
+        grid-template-columns: 1.35fr 0.75fr;
+      }
+    }
+
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .hobby-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px 16px;
+    }
+
+    .hobby-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .hobby-item h4 {
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .hobby-item p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hobby-layout .photo-box {
+      height: 100%;
+      max-height: none;
+      min-height: 360px;
+    }
+
+    /* Контакты */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .contact-card h2 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 34px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Шапка с векторным логотипом VS -->
+    <header class="topbar">
+      <a href="#" class="brand">
+        <svg class="brand-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Логотип VS">
+          <rect x="3" y="3" width="58" height="58" rx="14" stroke="var(--accent)" stroke-width="2.5" fill="var(--accent-soft)" />
+          <path d="M16 21L26 44L36 21" stroke="var(--text)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M47 23.5C45.5 21.8 42.5 21 39.8 22.2C37.2 23.4 37.2 27.2 40.5 29C44 30.8 48 32.5 47.6 37.2C47.2 41.6 42.2 44.2 37.5 42.2" stroke="var(--accent-2)" stroke-width="3.2" stroke-linecap="round" />
+          <path d="M51 11L52.4 14.6L56 16L52.4 17.4L51 21L49.6 17.4L46 16L49.6 14.6L51 11Z" fill="var(--accent-2)" />
+        </svg>
+        <div>
+          <div class="brand-title">VICTORIA SKLYAR</div>
+          <div class="brand-sub">ГУАП • ИТ &amp; Визуальные решения</div>
+        </div>
+      </a>
+      <a class="nav-cta" href="https://t.me/WildFlower0000" target="_blank" rel="noopener">Telegram →</a>
+    </header>
+
+    <!-- Главный экран (Фото № 1 — крупный план с галстуком) -->
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Студентка ИТ • ГУАП • Группа 2543</span>
+        <h1>Виктория Скляр</h1>
+        <p class="hero-lead">
+          Соединяю техническую логику и сильный визуальный вкус. Учусь программированию, проектирую аккуратные веб-инструменты и создаю презентации, которые объясняют сложные вещи просто и красиво.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://t.me/WildFlower0000" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn-secondary" href="mailto:Vsabukova@gmail.com">Vsabukova@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="photo-box" id="box1">
+        <img id="img1" src="photo1.jpg" alt="Виктория Скляр — портрет" onload="markLoaded('box1')" onerror="markEmpty('box1')" />
+        <div class="photo-overlay"></div>
+        <label class="photo-placeholder" for="input1">
+          <strong>Фото 1 (рекомендуем фото № 5)</strong>
+          <span>Нажми сюда для примерки или положи рядом файл <code>photo1.jpg</code></span>
+        </label>
+        <input type="file" id="input1" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img1', 'box1')" />
+      </div>
+    </section>
+
+    <!-- Блок «Обо мне» (Фото № 2 — деловой кадр стоя) -->
+    <section class="about-card">
+      <div class="photo-box" id="box2">
+        <img id="img2" src="photo2.jpg" alt="Виктория Скляр — деловой портрет" onload="markLoaded('box2')" onerror="markEmpty('box2')" />
+        <div class="photo-overlay"></div>
+        <label class="photo-placeholder" for="input2">
+          <strong>Фото 2 (фото № 2, ч/б стоя)</strong>
+          <span>Нажми сюда для примерки или положи рядом файл <code>photo2.jpg</code></span>
+        </label>
+        <input type="file" id="input2" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img2', 'box2')" />
+      </div>
+      <div class="about-text">
+        <span class="sec-tag">О подходе к делу</span>
+        <h2 class="sec-title" style="margin-top: 6px;">Между кодом и визуалом</h2>
+        <p>
+          Мне одинаково интересно разбираться, как устроены алгоритмы и веб-интерфейсы внутри, и делать так, чтобы сложный материал выглядел понятно и эстетично с первого взгляда.
+        </p>
+        <p>
+          Я быстро осваиваю новые инструменты с нуля: от проектирования логики на Python и вёрстки однофайловых сайтов до журнальной композиции презентаций и интерактивных форматов для защиты проектов.
+        </p>
+      </div>
+    </section>
+
+    <!-- Почему выбрать именно меня -->
+    <div class="sec-head">
+      <h2 class="sec-title">Почему стоит выбрать именно меня</h2>
+      <span class="sec-tag">Сильные стороны</span>
+    </div>
+    <section class="grid-2">
+      <div class="card">
+        <div class="card-num">01 / ЛОГИКА + ЭСТЕТИКА</div>
+        <h3>Понимаю и код, и дизайн</h3>
+        <p>Не просто «украшаю» слайды и не пишу код в отрыве от пользователя: умею разобрать сложную техническую тему и превратить её в понятный, аккуратный и визуально сильный продукт.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02 / СИСТЕМНОСТЬ</div>
+        <h3>Точность и проверка фактов</h3>
+        <p>Работаю по чёткой структуре и требованиям, проверяю формулы, источники и крайние случаи — ценю воспроизводимый результат без «воды» и догадок.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03 / ОСОЗНАННЫЙ ИИ</div>
+        <h3>Ускоряю работу нейросетями</h3>
+        <p>Использую современные ИИ-инструменты для прототипирования и поиска идей, но архитектуру, стиль, редактуру и финальное тестирование всегда контролирую лично.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04 / ОТВЕТСТВЕННОСТЬ</div>
+        <h3>Довожу задачи до результата</h3>
+        <p>Быстро осваиваю незнакомые инструменты с нуля, спокойно держу темп в сжатые сроки и довожу идею до реально работающей ссылки, файла или защиты.</p>
+      </div>
+    </section>
+
+    <!-- Проекты и навыки -->
+    <div class="sec-head">
+      <h2 class="sec-title">Проекты и навыки</h2>
+      <span class="sec-tag">Практика</span>
+    </div>
+    <section class="grid-3">
+      <div class="card">
+        <div class="card-num">PYTHON • ГОСТ</div>
+        <h3>Модуль ДЗЗ и ADS-B</h3>
+        <p>Спроектировала модуль согласования разновременных данных с матрицей совместимости, проверила 8 контрольных тестов (Т1–Т8) и рассчитала экономику внедрения.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">HTML • CSS • JS</div>
+        <h3>Веб-тест с QR-кодом</h3>
+        <p>Сделала лёгкий однофайловый сайт-анкету для защиты курсовой со сбором статистики в Google Таблицу и минимальным углеродным следом вместо бумажных бланков.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">ДИЗАЙН • СТРУКТУРА</div>
+        <h3>Презентации под задачу</h3>
+        <p>Оформляю учебные, исторические и концептуальные презентации: от строгого минимализма и журнальной вёрстки до тёмного технологичного стиля Cyber Chrome.</p>
+      </div>
+    </section>
+
+    <div class="card" style="margin-top: 14px;">
+      <h3>Стек и инструменты</h3>
+      <div class="tags">
+        <span class="tag">Python (базовый)</span>
+        <span class="tag">HTML / CSS / JavaScript</span>
+        <span class="tag">JSON &amp; Google Apps Script</span>
+        <span class="tag">Linux (базовый запуск)</span>
+        <span class="tag">ТЗ по ГОСТ 34.602-2020</span>
+        <span class="tag">ИИ-инструменты и промптинг</span>
+        <span class="tag">Дизайн презентаций</span>
+        <span class="tag">Визуализация данных и схем</span>
+      </div>
+    </div>
+
+    <!-- Хобби и характер (Фото № 3 — кадр сидя с улыбкой) -->
+    <div class="sec-head">
+      <h2 class="sec-title">Интересы и характер</h2>
+      <span class="sec-tag">Вне учёбы</span>
+    </div>
+    <section class="hobby-layout">
+      <div class="hobby-grid">
+        <div class="hobby-item">
+          <div class="hobby-icon">🎨</div>
+          <div>
+            <h4>Рисование и лепка из глины</h4>
+            <p>Тренируют насмотренность, чувство композиции, цвета и объёма — это напрямую помогает в оформлении сайтов и презентаций.</p>
+          </div>
+        </div>
+        <div class="hobby-item">
+          <div class="hobby-icon">🤖</div>
+          <div>
+            <h4>Изучение ИИ-технологий</h4>
+            <p>Слежу за развитием нейросетей и проверяю на практике, как они помогают в учёбе, разработке и дизайне.</p>
+          </div>
+        </div>
+        <div class="hobby-item">
+          <div class="hobby-icon">🎯</div>
+          <div>
+            <h4>Стрельба</h4>
+            <p>Учит концентрации, хладнокровию, точности и умению собираться в самый ответственный момент.</p>
+          </div>
+        </div>
+        <div class="hobby-item">
+          <div class="hobby-icon">🏐</div>
+          <div>
+            <h4>Волейбол</h4>
+            <p>Развивает командное взаимодействие, быструю реакцию и умение поддерживать общий ритм в проекте.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-box" id="box3">
+        <img id="img3" src="photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" onload="markLoaded('box3')" onerror="markEmpty('box3')" />
+        <div class="photo-overlay"></div>
+        <label class="photo-placeholder" for="input3">
+          <strong>Фото 3 (фото № 3, ч/б сидя)</strong>
+          <span>Нажми сюда для примерки или положи рядом файл <code>photo3.jpg</code></span>
+        </label>
+        <input type="file" id="input3" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img3', 'box3')" />
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact-card">
+      <h2>Открыта к проектам и новым задачам</h2>
+      <p style="color: var(--muted); font-size: 15px;">
+        Нужна сильная презентация, совместный учебный проект или знакомство для будущей стажировки — напиши мне напрямую.
+      </p>
+      <div class="contact-links">
+        <a class="btn-primary" href="https://t.me/WildFlower0000" target="_blank" rel="noopener">Telegram: @WildFlower0000</a>
+        <a class="btn-secondary" href="mailto:Vsabukova@gmail.com">Почта: Vsabukova@gmail.com</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Виктория Скляр • Санкт-Петербург, ГУАП • Сделано на чистом HTML, CSS и JS
+    </footer>
+  </div>
+
+  <script>
+    function markLoaded(boxId) {
+      const box = document.getElementById(boxId);
+      box.classList.remove("is-empty");
+      box.classList.add("has-img");
+    }
+
+    function markEmpty(boxId) {
+      const box = document.getElementById(boxId);
+      box.classList.remove("has-img");
+      box.classList.add("is-empty");
+    }
+
+    function loadLocalPhoto(input, imgId, boxId) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      const img = document.getElementById(imgId);
+      img.src = URL.createObjectURL(file);
+      markLoaded(boxId);
+    }
+  </script>
+</body>
+</html>
