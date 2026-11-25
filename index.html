@@ -191,52 +191,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
     }
 
     .photo-box img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Фото вписывается целиком */
-      background-color: #1a183a;
-      display: none;
-    }
-
-    .photo-box.has-img img { display: block; }
-    .photo-box.has-img .photo-placeholder { display: none; }
-
-    .photo-overlay {
-      position: absolute;
-      inset: 0;
-      background: var(--photo-tint);
-      pointer-events: none;
-      display: none;
-    }
-
-    .photo-placeholder {
-      padding: 20px;
-      color: var(--muted);
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    .photo-placeholder strong {
-      color: var(--text);
-      margin-bottom: 6px;
-      font-size: 15px;
-    }
-
-    .photo-placeholder code {
-      color: var(--accent-2);
-      background: rgba(0, 212, 255, 0.12);
-      padding: 2px 6px;
-      border-radius: 6px;
+      object-fit: cover; /* <--- ИЗМЕНЕНО ТУТ: теперь фото заполняет всю рамку */
+      object-position: center top;
+      display: block;
     }
 
     /* Блок «Обо мне» со вторым фото */
@@ -474,29 +436,15 @@
         </div>
       </div>
 
-      <div class="photo-box" id="box1">
-        <!-- Ссылка на локальный файл в репозитории -->
-        <img id="img1" src="photo1.jpg" alt="Виктория Скляр — портрет" onload="markLoaded('box1')" onerror="markEmpty('box1')" />
-        <div class="photo-overlay"></div>
-        <label class="photo-placeholder" for="input1">
-          <strong>Фото 1</strong>
-          <span>Нажми сюда для примерки или положи рядом файл <code>photo1.jpg</code></span>
-        </label>
-        <input type="file" id="input1" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img1', 'box1')" />
+      <div class="photo-box">
+        <img src="https://raw.githubusercontent.com/vsabukova-stack/super-duper-parakeet/main/photo1.jpg" alt="Виктория Скляр — портрет" />
       </div>
     </section>
 
     <!-- Блок «Обо мне» (Фото № 2) -->
     <section class="about-card">
-      <div class="photo-box" id="box2">
-        <!-- Ссылка на локальный файл в репозитории -->
-        <img id="img2" src="photo2.jpg" alt="Виктория Скляр — деловой портрет" onload="markLoaded('box2')" onerror="markEmpty('box2')" />
-        <div class="photo-overlay"></div>
-        <label class="photo-placeholder" for="input2">
-          <strong>Фото 2</strong>
-          <span>Нажми сюда для примерки или положи рядом файл <code>photo2.jpg</code></span>
-        </label>
-        <input type="file" id="input2" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img2', 'box2')" />
+      <div class="photo-box">
+        <img src="https://raw.githubusercontent.com/vsabukova-stack/super-duper-parakeet/main/photo2.jpg" alt="Виктория Скляр — деловой портрет" />
       </div>
       <div class="about-text">
         <span class="sec-tag">О подходе к делу</span>
@@ -612,15 +560,8 @@
         </div>
       </div>
 
-      <div class="photo-box" id="box3">
-        <!-- Ссылка на локальный файл в репозитории -->
-        <img id="img3" src="photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" onload="markLoaded('box3')" onerror="markEmpty('box3')" />
-        <div class="photo-overlay"></div>
-        <label class="photo-placeholder" for="input3">
-          <strong>Фото 3</strong>
-          <span>Нажми сюда для примерки или положи рядом файл <code>photo3.jpg</code></span>
-        </label>
-        <input type="file" id="input3" accept="image/*" hidden onchange="loadLocalPhoto(this, 'img3', 'box3')" />
+      <div class="photo-box">
+        <img src="https://raw.githubusercontent.com/vsabukova-stack/super-duper-parakeet/main/photo3.jpg" alt="Виктория Скляр — фото для раздела интересов" />
       </div>
     </section>
 
@@ -640,27 +581,5 @@
       © 2026 Виктория Скляр • Санкт-Петербург, ГУАП • Сделано на чистом HTML, CSS и JS
     </footer>
   </div>
-
-  <script>
-    function markLoaded(boxId) {
-      const box = document.getElementById(boxId);
-      box.classList.remove("is-empty");
-      box.classList.add("has-img");
-    }
-
-    function markEmpty(boxId) {
-      const box = document.getElementById(boxId);
-      box.classList.remove("has-img");
-      box.classList.add("is-empty");
-    }
-
-    function loadLocalPhoto(input, imgId, boxId) {
-      const file = input.files && input.files[0];
-      if (!file) return;
-      const img = document.getElementById(imgId);
-      img.src = URL.createObjectURL(file);
-      markLoaded(boxId);
-    }
-  </script>
 </body>
 </html>
